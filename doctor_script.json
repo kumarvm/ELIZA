@@ -1,0 +1,735 @@
+{
+  "greetings": [
+    "Hello, how are you feeling today?",
+    "How do you do? Please tell me your problem"
+  ],
+  "quit commands": [
+    "quit",
+    "bye",
+    "goodbye",
+    "thank you for your help",
+    "thanks for your help",
+    "thank you very much for your help",
+    "bye now",
+    "bye bye"
+  ],
+  "goodbyes": [
+    "Goodbye",
+    "Till next time",
+    "Hope to see you again soon",
+    "Thanks for talking with me"
+  ],
+  "default": [
+    "I am not sure I understand you fully",
+    "Could you elaborate for me?",
+    "Please go on",
+    "Sorry?",
+    "Can you say that again?",
+    "Could you please repeat that again?",
+    "What does that suggest to you?",
+    "Do you feel strongly about discussing such things?"
+  ],
+  "presub rules": {
+    "dont": "do not",
+    "cant": "can not",
+    "wont": "will not",
+    "don't": "do not",
+    "can't": "can not",
+    "won't": "will not",
+    "i": "I",
+    "im": "I am",
+    "I'm": "I am",
+    "Im": "I am",
+    "couldnt": "could not",
+    "dreams": "dream",
+    "mom": "mother",
+    "dad": "father",
+    "mum": "mother",
+    "mummy": "mother",
+    "daddy": "father",
+    "^ive$": "I have",
+    "I've": "I have",
+    "^Ive$": "I have",
+    "recollect": "remember",
+    "you're": "you are"
+  },
+  "postsub rules": {
+    "^i$": "you",
+    "I": "you",
+    "you": "I",
+    "your": "my",
+    "my": "your",
+    "this": "that",
+    "that": "this",
+    "me": "you",
+    "myself": "yourself",
+    "yourself": "myself"
+  },
+  "keywords": [
+    {
+      "keyword": ["sorry"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "Please don't apologize",
+            "Apologies are not necessary",
+            "What feelings do you have when you apologize?",
+            "I've told you that apologies are not required",
+            "You don't have to apologise"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["remember"],
+      "precedence": 5,
+      "rules": [
+        {
+          "decomposition": ".*I remember .*",
+          "reassembly": [
+            "Do you often think of $1?",
+            "Does thinking of $1 bring anything else to mind?",
+            "What else do you remember?",
+            "Why do you remember $1 just now?",
+            "What in the present situation reminds you of $1?",
+            "What is the connection between me and $1?"
+          ]
+        },
+        {
+          "decomposition": ".*do you remember .*",
+          "reassembly": [
+            "Did you think I would forget $1?",
+            "Why do you think I should recall $1 now?",
+            "What about $1?",
+            "=what",
+            "You mentioned $1"
+          ]
+        },
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            ":newkey"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["if"],
+      "precedence": 3,
+      "rules": [
+        {
+          "decomposition": ".*if .*",
+          "reassembly": [
+            "Do you think it's likely that $1?",
+            "Do you wish that $1?",
+            "What do you think about $1?",
+            "Really, if $1?"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["dreamt", "dreamed"],
+      "precedence": 4,
+      "rules": [
+        {
+          "decomposition": ".*I dreamt .*",
+          "reassembly": [
+            "Really, $1?",
+            "Have you ever fantasied $1 while you were awake?",
+            "Have you dreamt $1 before?",
+            "=dream",
+            ":newkey"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["dream", "dreams"],
+      "precedence": 3,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "What does that dream suggest to you?",
+            "Do you dream often?",
+            "What people appear in your dreams?",
+            "Don't you believe that dream has something to do with your problem?",
+            ":newkey"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["perhaps", "maybe"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "You don't seem quite certain",
+            "Why the uncertain tone?",
+            "Can't you be more positive?",
+            "You aren't sure...",
+            "Don't you know?"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["name"],
+      "precedence": 15,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "I am not interested in names",
+            "I've told you before, I don't care about names --- Please continue"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["french", "spanish", "german", "italian"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "I am sorry, I speak only English"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["hello"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "How do you do? Please state your problem"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["computer", "machine", "machines", "computers"],
+      "precedence": 50,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "Do computers worry you?",
+            "Why do you mention computers?",
+            "What do you think machines have to do with your problem?",
+            "Don't you think computers can help people?",
+            "What about machines worries you?",
+            "What do you think about machines?"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["am"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*am I .*",
+          "reassembly": [
+            "Do you believe you are $2?",
+            "Would you want to be $2?",
+            "You wish I would tell you you are $2",
+            "What would it mean if you were $2?",
+            "=what"
+          ]
+        },
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "Why do you say 'am'?",
+            "I don't understand that",
+            ":newkey"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["are"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*are you .*",
+          "reassembly": [
+            "Why are you interested in whether I am $2 or not?",
+            "Would you prefer if I weren't $2?",
+            "Perhaps I am $2 in your fantasies",
+            "Do you sometimes think I am $2?",
+            "=what"
+          ]
+        },
+        {
+          "decomposition": ".*are .*",
+          "reassembly": [
+            "Did you think they might not be $1?",
+            "Would you like it if they were not $1?",
+            "What if they were not $1?",
+            "Possibly they are $1"
+          ]
+        },
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            ":newkey"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["your"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*your .*",
+          "reassembly": [
+            "Why are you concerned over my $1?",
+            "What about your own $1?",
+            "Are you worried about someone else's $1?",
+            "Really, my $1?"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["was", "were"],
+      "precedence": 2,
+      "rules": [
+        {
+          "decomposition": ".*was I .*",
+          "reassembly": [
+            "What if you were $2?",
+            "Do you think you were $2?",
+            "Were you $2?",
+            "What would it mean if you were $2?",
+            "What does '$2' suggest to you?",
+            "=what"
+          ]
+        },
+        {
+          "decomposition": ".*I was .*",
+          "reassembly": [
+            "Were you really?",
+            "Why do you tell me you were $1 now?",
+            "Perhaps I already knew you were $1"
+          ]
+        },
+        {
+          "decomposition": ".*were you .*",
+          "reassembly": [
+            "Would you like to believe I was $2?",
+            "What suggests that I was $2?",
+            "What do you think?",
+            "Perhaps I was $2",
+            "What if I had been $2?"
+          ]
+        },
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            ":newkey"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["I"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*I (want need desire) .*",
+          "reassembly": [
+            "What would it mean to you if you got $2?",
+            "Why do you want $2?",
+            "Suppose you got $2 soon",
+            "What if you never got $2",
+            "What would getting $2 mean to you?",
+            "What does wanting $2 have to do with this discussion?"
+          ]
+        },
+        {
+          "decomposition": ".*I am .* (happy elated glad better) .*",
+          "reassembly": [
+            "How have I helped you to be $3?",
+            "Has your treatment made you $3?",
+            "What makes you $3 just now?",
+            "Can you explain why you are suddenly $3?"
+          ]
+        },
+        {
+          "decomposition": ".*I am .* (sad sick depressed unhappy) .*",
+          "reassembly": [
+            "I am sorry to hear that you are $3",
+            "Do you think that coming here will help you not to be $3?",
+            "I am sure it is not pleasant to be $3",
+            "Can you explain what made you $3?"
+          ]
+        },
+        {
+          "decomposition": ".*I was .*",
+          "reassembly": [
+            "=was"
+          ]
+        },
+        {
+          "decomposition": ".*I (believe feel think) you .*",
+          "reassembly": [
+            "Do you really think so?",
+            "But you are not sure I $3",
+            "Do you really doubt I $3?"
+          ]
+        },
+        {
+          "decomposition": ".*I .* (believe feel think) .* I .*",
+          "reassembly": [
+            "=you"
+          ]
+        },
+        {
+          "decomposition": ".*I am .*",
+          "reassembly": [
+            "Is it because you are $2 that you came to me?",
+            "How long have you been $2?",
+            "Do you believe it normal to be $2?",
+            "Do you enjoy being $2?"
+          ]
+        },
+        {
+          "decomposition": ".*I can not .*",
+          "reassembly": [
+            "How do you know you can't $3?",
+            "Have you tried?",
+            "Perhaps you could $3 now",
+            "Do you really want to be able to $3?"
+          ]
+        },
+        {
+          "decomposition": ".*I do not .*",
+          "reassembly": [
+            "Don't you really $3?",
+            "Why don't you $3?",
+            "Do you wish to be able to $3?",
+            "Does that trouble you?"
+          ]
+        },
+        {
+          "decomposition": ".*I feel .*",
+          "reassembly": [
+            "Tell me more about such feelings",
+            "Do you often feel $2?",
+            "Do you enjoy feeling $2?",
+            "Of what does feeling $2 remind you of?"
+          ]
+        },
+        {
+          "decomposition": ".*I .* you .*",
+          "reassembly": [
+            "Perhaps in your fantasy we $1 each other",
+            "Do you wish to $1 me?",
+            "Do you $1 anyone else?"
+          ]
+        },
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "You say $0",
+            "Can you elaborate on that?",
+            "Do you say $0 for some special reason?",
+            "That's quite interesting, I would love to listen more about it"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["you"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*you remind me of .*",
+          "reassembly": [
+            "=dit"
+          ]
+        },
+        {
+          "decomposition": ".*you are .*",
+          "reassembly": [
+            "What makes you think I am $2?",
+            "Does it please you to believe I am $2?",
+            "Do you sometimes wish you were $2?",
+            "Perhaps you would like to be $2"
+          ]
+        },
+        {
+          "decomposition": ".*you .* me",
+          "reassembly": [
+            "Why do you think I $1 you?",
+            "You like to think I $1 you --- don't you",
+            "What makes you think I $1 you?",
+            "Really, I $1 you?",
+            "Do you wish to believe I $1 you?",
+            "Suppose I did $1 you --- What would that mean?",
+            "Does someone else believe I $1 you?"
+          ]
+        },
+        {
+          "decomposition": ".*you .*",
+          "reassembly": [
+            "We were discussing you --- not me",
+            "Oh, I $1",
+            "You're not really talking about me, are you?",
+            "What are your feelings now?"
+          ]
+        },
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            ":newkey"
+          ]
+        }
+
+      ]
+    },
+    {
+      "keyword": ["yes", "certainly"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "You seem quite positive",
+            "You are sure",
+            "I see",
+            "I understand"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["no"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "Are you saying 'no' just to be negative?",
+            "You are being a bit negative",
+            "Why not?",
+            "Why 'no'?"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["my"],
+      "precedence": 2,
+      "rules": [
+        {
+          "decomposition": "$my .*",
+          "reassembly": [
+            "Let's discuss further why your $1",
+            "Earlier you said your $1",
+            "But your $1",
+            "Does that have anything to do with the fact that your $1?"
+          ]
+        },
+        {
+          "decomposition": ".*my .* (family mother father children kids son daughter) .*",
+          "reassembly": [
+            "Tell me more about your family",
+            "Who else in your family $3?",
+            "Your $2",
+            "What else comes to mind when you think of your $2?"
+          ]
+        },
+        {
+          "decomposition": ".*my .*",
+          "reassembly": [
+            "Your $1",
+            "Why do you say your $1?",
+            "Does that suggest anything else which belongs to you?",
+            "Is your $1 important to you?"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["can"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*can you .*",
+          "reassembly": [
+            "You believe I can $2, don't you?",
+            "You want me to be able to $2",
+            "Perhaps you would like to be able to $2 yourself"
+          ]
+        },
+        {
+          "decomposition": ".*can I .*",
+          "reassembly": [
+            "Whether or not you can $2 depends on you more than me",
+            "Do you want to be able to $2?",
+            "Perhaps you don't want to $2",
+            "=what"
+          ]
+        },
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            ":newkey"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["what", "how", "when"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "Why do you ask?",
+            "Does that question interest you?",
+            "What is it you really want to know?",
+            "Are such questions much on your mind?",
+            "What answer would please you most?",
+            "What do you think?",
+            "What comes to your mind when you ask that?",
+            "Have you asked such question before?",
+            "Have you asked anyone else?"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["because"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "Is that the real reason?",
+            "Don't any other reasons come to mind?",
+            "Does that reason seem to explain anything else?",
+            "What other reasons might there be?"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["why"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".* why do not I .*",
+          "reassembly": [
+            "Do you believe I don't $4?",
+            "Perhaps I will $4 in good time",
+            "Should you $4 yourself?",
+            "You want me to $4",
+            "=what"
+          ]
+        },
+        {
+          "decomposition": ".* why can not I .*",
+          "reassembly": [
+            "Do you think you should be able to $4?",
+            "Do you want to be able to $4?",
+            "Do you believe this will help you to $4?",
+            "Have you any idea why you can't $4?",
+            "=what"
+          ]
+        },
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "=what"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["everyone", "everybody", "nobody", "no one"],
+      "precedence": 2,
+      "rules": [
+        {
+          "decomposition": ".* (everyone everybody nobody no one) .*",
+          "reassembly": [
+            "Really, $0?",
+            "Surely not $0",
+            "Can you think of anyone in particular?",
+            "Who, for example?",
+            "You are thinking of a very special person",
+            "Who, may I ask?",
+            "Some special perhaps",
+            "You have a particular person in mind, don't you?",
+            "Who do you think you're talking about?"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["always"],
+      "precedence": 1,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "Can you think of a specific example?",
+            "When?",
+            "What incident are you thinking of?",
+            "Really, always?"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["like"],
+      "precedence": 10,
+      "rules": [
+        {
+          "decomposition": ".* (am is are was) .* like .*",
+          "reassembly": [
+            "=dit"
+          ]
+        },
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            ":newkey"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": ["dit", "alike", "same"],
+      "precedence": 0,
+      "rules": [
+        {
+          "decomposition": ".*",
+          "reassembly": [
+            "In what way?",
+            "What resemblance do you see?",
+            "What does that similarity suggest to you?",
+            "What other connections do you see?",
+            "What do you suppose that resemblance means?",
+            "What is the connection, do you suppose?",
+            "Could there really be some connection?",
+            "How?"
+          ]
+        }
+      ]
+    }
+  ]
+}
