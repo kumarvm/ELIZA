@@ -23,7 +23,11 @@ def print_welcome_message(data, greetings):
 ''' Gets the input from the user; ends the program if a quit command is used, otherwise the input_message
  goes through pre substitution, the keywords are then found and stored and get_output() is called. '''
 def get_input():
-    input_message = input().strip() #Strips any pretailing or trailing spaces
+ 
+    #Removes any pretailing or trailing spaces as well as punctuation
+    input_message = input().strip()
+    punct_regex = re.compile('[' + re.escape(string.punctuation) + ']')
+    input_message = punct_regex.sub("", input_message)
 
     for j in data["goodbyes"]:
         goodbyes.append(j)
