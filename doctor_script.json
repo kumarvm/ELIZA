@@ -399,7 +399,7 @@
         {
           "decomposition": ".*I am .*",
           "reassembly": [
-            "Is it because you are $2 that you came to me?",
+            "Is it because you are $2 why you came to me?",
             "How long have you been $2?",
             "Do you believe it normal to be $2?",
             "Do you enjoy being $2?"
