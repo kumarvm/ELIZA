@@ -17,7 +17,7 @@ If the reassembly rule contains '$' followed by a number, then the program will 
 If the reassembly rule doesn't match any of the above conditions, then the reassembly rule is printed as the output message as normal.
 
 ## Screenshots
-
+![image](https://github.com/kumarvm/ELIZA/assets/89636576/71e8fdcd-ae60-48a3-af9e-b6859eb62e83)
 
 ## IDE and Libraries used
 Visual Studio Code, json, re, random
