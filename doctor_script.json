@@ -56,7 +56,7 @@
   "postsub rules": {
     "^i$": "you",
     "I": "you",
-    "you": "I",
+    "^you$": "I",
     "your": "my",
     "my": "your",
     "this": "that",
